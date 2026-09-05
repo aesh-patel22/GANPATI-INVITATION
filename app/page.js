@@ -187,8 +187,10 @@ export default function Home() {
   </div>
 
 </section>
-            <p className="section-icon">❀</p>
-            <p className="eyebrow reveal">THE AUSPICIOUS CELEBRATION</p>
+
+<section className="events section-pad">
+  <p className="section-icon">❀</p>
+  <p className="eyebrow reveal">THE AUSPICIOUS CELEBRATION</p>
             <h2 className="reveal">Arrival & Ceremony</h2>
             <div className="event-grid">
               <article className="royal-card reveal">
@@ -204,10 +206,7 @@ export default function Home() {
             <a className="primary maps" href="https://maps.app.goo.gl/uid5zHvHycaLojpL9" target="_blank" rel="noreferrer">View on Google Maps</a>
           </section>
 
-          <section className="schedule section-pad">
-            <p className="section-icon">✦</p>
-            <p className="eyebrow reveal">DAILY PUJA & AARTI</p>
-            <h2 className="reveal">Sacred Schedule</h2>
+          
             <div className="timeline">
               {schedule.map((item) => (
                 <article className="timeline-row reveal" key={item.number}>
