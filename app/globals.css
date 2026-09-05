@@ -718,163 +718,80 @@ main {
 
 
 /* =========================================================
-   GOLDEN RAYS
+   GOLDEN RAYS BEHIND GANPATI
+   Works with an EMPTY .ganesha-rays div
    ========================================================= */
 
 .ganesha-rays {
-
   position: absolute;
-
   width: 480px;
-
   height: 480px;
-
   left: 50%;
-
   top: 43%;
-
-  transform:
-    translate(-50%, -50%);
-
+  transform: translate(-50%, -50%);
   border-radius: 50%;
-
   z-index: -2;
-
   pointer-events: none;
-
-  animation:
-    rotateRays
-    35s
-    linear
-    infinite;
-}
-
-
-.ganesha-rays span {
-
-  position: absolute;
-
-  left: 50%;
-
-  top: 50%;
-
-  width: 4px;
-
-  height: 225px;
-
-  transform-origin:
-    50% 100%;
-
-  border-radius: 100%;
+  opacity: 0.9;
 
   background:
-    linear-gradient(
-      to top,
-      transparent 0%,
-      rgba(190, 126, 25, 0.10) 15%,
-      rgba(255, 216, 105, 0.55) 60%,
-      rgba(255, 229, 145, 0.95) 100%
+    repeating-conic-gradient(
+      from 0deg,
+      transparent 0deg 12deg,
+      rgba(255, 222, 130, 0.05) 12deg 14deg,
+      rgba(255, 216, 105, 0.55) 14deg 15.5deg,
+      rgba(255, 229, 145, 0.9) 15.5deg 17deg,
+      transparent 17deg 30deg
     );
 
+  -webkit-mask-image:
+    radial-gradient(
+      circle,
+      transparent 0%,
+      transparent 31%,
+      #000 43%,
+      #000 76%,
+      transparent 92%
+    );
+
+  mask-image:
+    radial-gradient(
+      circle,
+      transparent 0%,
+      transparent 31%,
+      #000 43%,
+      #000 76%,
+      transparent 92%
+    );
+
+  filter:
+    drop-shadow(0 0 8px rgba(255, 205, 80, 0.35))
+    drop-shadow(0 0 22px rgba(255, 174, 40, 0.18));
+
+  animation:
+    rotateRays 35s linear infinite;
+}
+
+.ganesha-rays::before {
+  content: '';
+  position: absolute;
+  inset: 19%;
+  border: 1px solid rgba(244, 210, 122, 0.20);
+  border-radius: 50%;
   box-shadow:
-    0 0 8px
-    rgba(255, 205, 80, 0.45),
-
-    0 0 20px
-    rgba(255, 174, 40, 0.25);
+    0 0 18px rgba(244, 210, 122, 0.12),
+    inset 0 0 25px rgba(216, 168, 62, 0.08);
 }
-
-
-.ganesha-rays span:nth-child(1) {
-  transform:
-    translate(-50%, -100%)
-    rotate(0deg);
-}
-
-.ganesha-rays span:nth-child(2) {
-  transform:
-    translate(-50%, -100%)
-    rotate(30deg);
-}
-
-.ganesha-rays span:nth-child(3) {
-  transform:
-    translate(-50%, -100%)
-    rotate(60deg);
-}
-
-.ganesha-rays span:nth-child(4) {
-  transform:
-    translate(-50%, -100%)
-    rotate(90deg);
-}
-
-.ganesha-rays span:nth-child(5) {
-  transform:
-    translate(-50%, -100%)
-    rotate(120deg);
-}
-
-.ganesha-rays span:nth-child(6) {
-  transform:
-    translate(-50%, -100%)
-    rotate(150deg);
-}
-
-.ganesha-rays span:nth-child(7) {
-  transform:
-    translate(-50%, -100%)
-    rotate(180deg);
-}
-
-.ganesha-rays span:nth-child(8) {
-  transform:
-    translate(-50%, -100%)
-    rotate(210deg);
-}
-
-.ganesha-rays span:nth-child(9) {
-  transform:
-    translate(-50%, -100%)
-    rotate(240deg);
-}
-
-.ganesha-rays span:nth-child(10) {
-  transform:
-    translate(-50%, -100%)
-    rotate(270deg);
-}
-
-.ganesha-rays span:nth-child(11) {
-  transform:
-    translate(-50%, -100%)
-    rotate(300deg);
-}
-
-.ganesha-rays span:nth-child(12) {
-  transform:
-    translate(-50%, -100%)
-    rotate(330deg);
-}
-
 
 @keyframes rotateRays {
-
   from {
-
-    transform:
-      translate(-50%, -50%)
-      rotate(0deg);
+    transform: translate(-50%, -50%) rotate(0deg);
   }
 
   to {
-
-    transform:
-      translate(-50%, -50%)
-      rotate(360deg);
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 }
-
 
 /* =========================================================
    GANESHA IMAGE
@@ -979,490 +896,172 @@ main {
 
 /* =========================================================
    REALISTIC ROSE PETALS
-   WHITE + EXISTING GOLD TEXT COLOR
+   FIRST 3.6–4 SECONDS ONLY
+   WHITE + GOLD TEXT COLOR
    ========================================================= */
 
 .petal-rain {
-
-  position: absolute;
-
-  top: -120px;
-
-  left: -50vw;
-
+  position: fixed;
+  inset: 0;
   width: 100vw;
-
-  height: calc(100% + 700px);
-
+  height: 100vh;
   pointer-events: none;
-
-  overflow: visible;
-
-  z-index: 40;
+  overflow: hidden;
+  z-index: 80;
 }
-
-
-/* =========================================================
-   BASIC PETAL SHAPE
-   ========================================================= */
 
 .real-petal {
-
   position: absolute;
-
-  top: -80px;
-
+  top: -45px;
+  left: 0;
   display: block;
-
-  width: 17px;
-
-  height: 25px;
-
-  border-radius:
-    75% 25% 70% 30%
-    / 60% 35% 65% 40%;
-
-  transform-origin:
-    center center;
-
+  width: 16px;
+  height: 24px;
+  border-radius: 78% 28% 72% 30% / 62% 34% 68% 38%;
+  transform-origin: 50% 50%;
   opacity: 0;
-
-  animation:
-    realisticPetalFall
-    3.8s
-    cubic-bezier(.22,.61,.36,1)
-    1
-    forwards;
-
-  will-change:
-    transform,
-    opacity;
-
-  filter:
-    blur(0.1px);
-
+  animation: realisticPetalFall 3.35s ease-in-out 1 forwards;
+  will-change: transform, opacity;
+  filter: blur(0.15px);
 }
-
-
-/* =========================================================
-   WHITE / CREAM ROSE PETAL
-   ========================================================= */
-
-.white-petal {
-
-  background:
-    linear-gradient(
-      135deg,
-      #ffffff 0%,
-      #fffaf0 28%,
-      #f4e9d0 62%,
-      #d8c7a5 100%
-    );
-
-  box-shadow:
-
-    inset 2px 2px 3px
-    rgba(255,255,255,0.95),
-
-    inset -3px -4px 5px
-    rgba(126,104,72,0.18),
-
-    0 2px 8px
-    rgba(255,255,255,0.25);
-}
-
-
-/* =========================================================
-   GOLD PETAL
-   SAME FAMILY AS TEXT
-   ========================================================= */
-
-.gold-petal {
-
-  background:
-    linear-gradient(
-      135deg,
-      #ffe7a0 0%,
-      #f4d27a 25%,
-      #d8a83e 60%,
-      #9d6b19 100%
-    );
-
-  box-shadow:
-
-    inset 2px 2px 3px
-    rgba(255,235,170,0.8),
-
-    inset -3px -4px 5px
-    rgba(94,54,8,0.25),
-
-    0 2px 8px
-    rgba(216,168,62,0.35);
-}
-
-
-/* =========================================================
-   PETAL VEIN
-   ========================================================= */
 
 .real-petal::after {
-
   content: '';
-
   position: absolute;
-
   left: 50%;
-
-  top: 10%;
-
+  top: 9%;
   width: 1px;
-
-  height: 78%;
-
-  transform:
-    translateX(-50%)
-    rotate(-7deg);
-
-  background:
-    linear-gradient(
-      to bottom,
-      transparent,
-      rgba(255,255,255,0.65),
-      rgba(116,79,27,0.25),
-      transparent
-    );
-
+  height: 80%;
+  transform: translateX(-50%) rotate(-8deg);
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255,255,255,0.65),
+    rgba(116,79,27,0.22),
+    transparent
+  );
   opacity: 0.65;
 }
 
-
-/* =========================================================
-   DIFFERENT PETAL SIZES
-   ========================================================= */
-
-.petal-1 {
-  left: 3%;
-  width: 13px;
-  height: 20px;
-  animation-delay: 0.05s;
+.white-petal {
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #fffaf0 30%,
+    #f4e9d0 65%,
+    #d8c7a5 100%
+  );
+  box-shadow:
+    inset 2px 2px 3px rgba(255,255,255,0.95),
+    inset -3px -4px 5px rgba(126,104,72,0.18),
+    0 2px 8px rgba(255,255,255,0.25);
 }
 
-.petal-2 {
-  left: 8%;
-  width: 19px;
-  height: 27px;
-  animation-delay: 0.15s;
+.gold-petal {
+  background: linear-gradient(
+    135deg,
+    #ffe7a0 0%,
+    #f4d27a 28%,
+    #d8a83e 62%,
+    #9d6b19 100%
+  );
+  box-shadow:
+    inset 2px 2px 3px rgba(255,235,170,0.8),
+    inset -3px -4px 5px rgba(94,54,8,0.25),
+    0 2px 8px rgba(216,168,62,0.35);
 }
 
-.petal-3 {
-  left: 13%;
-  width: 12px;
-  height: 18px;
-  animation-delay: 0.30s;
-}
-
-.petal-4 {
-  left: 18%;
-  width: 21px;
-  height: 30px;
-  animation-delay: 0.40s;
-}
-
-.petal-5 {
-  left: 24%;
-  width: 15px;
-  height: 23px;
-  animation-delay: 0.52s;
-}
-
-.petal-6 {
-  left: 29%;
-  width: 18px;
-  height: 26px;
-  animation-delay: 0.65s;
-}
-
-.petal-7 {
-  left: 35%;
-  width: 12px;
-  height: 19px;
-  animation-delay: 0.75s;
-}
-
-.petal-8 {
-  left: 40%;
-  width: 20px;
-  height: 29px;
-  animation-delay: 0.90s;
-}
-
-.petal-9 {
-  left: 46%;
-  width: 14px;
-  height: 21px;
-  animation-delay: 1.00s;
-}
-
-.petal-10 {
-  left: 51%;
-  width: 19px;
-  height: 28px;
-  animation-delay: 1.12s;
-}
-
-.petal-11 {
-  left: 57%;
-  width: 13px;
-  height: 20px;
-  animation-delay: 1.20s;
-}
-
-.petal-12 {
-  left: 62%;
-  width: 21px;
-  height: 30px;
-  animation-delay: 1.30s;
-}
-
-.petal-13 {
-  left: 68%;
-  width: 15px;
-  height: 22px;
-  animation-delay: 1.42s;
-}
-
-.petal-14 {
-  left: 73%;
-  width: 18px;
-  height: 27px;
-  animation-delay: 1.52s;
-}
-
-.petal-15 {
-  left: 78%;
-  width: 12px;
-  height: 19px;
-  animation-delay: 1.62s;
-}
-
-.petal-16 {
-  left: 83%;
-  width: 20px;
-  height: 29px;
-  animation-delay: 1.72s;
-}
-
-.petal-17 {
-  left: 88%;
-  width: 14px;
-  height: 21px;
-  animation-delay: 1.84s;
-}
-
-.petal-18 {
-  left: 94%;
-  width: 19px;
-  height: 28px;
-  animation-delay: 1.94s;
-}
-
-.petal-19 {
-  left: 16%;
-  width: 17px;
-  height: 25px;
-  animation-delay: 2.05s;
-}
-
-.petal-20 {
-  left: 44%;
-  width: 13px;
-  height: 20px;
-  animation-delay: 2.15s;
-}
-
-.petal-21 {
-  left: 59%;
-  width: 18px;
-  height: 26px;
-  animation-delay: 2.25s;
-}
-
-.petal-22 {
-  left: 76%;
-  width: 14px;
-  height: 21px;
-  animation-delay: 2.35s;
-}
-
-.petal-23 {
-  left: 91%;
-  width: 17px;
-  height: 25px;
-  animation-delay: 2.45s;
-}
-
-.petal-24 {
-  left: 32%;
-  width: 20px;
-  height: 29px;
-  animation-delay: 2.55s;
-}
-
-
-/* =========================================================
-   REALISTIC FALLING MOTION
-   PETALS STOP AFTER ONE FALL
-   ========================================================= */
+/* Spread the petals naturally across the screen. */
+.petal-1  { left:  3%; width: 13px; height: 19px; animation-delay: 0.00s; }
+.petal-2  { left:  8%; width: 19px; height: 27px; animation-delay: 0.10s; }
+.petal-3  { left: 13%; width: 12px; height: 18px; animation-delay: 0.18s; }
+.petal-4  { left: 18%; width: 20px; height: 29px; animation-delay: 0.26s; }
+.petal-5  { left: 24%; width: 15px; height: 22px; animation-delay: 0.34s; }
+.petal-6  { left: 30%; width: 18px; height: 26px; animation-delay: 0.42s; }
+.petal-7  { left: 36%; width: 12px; height: 19px; animation-delay: 0.50s; }
+.petal-8  { left: 42%; width: 21px; height: 30px; animation-delay: 0.58s; }
+.petal-9  { left: 48%; width: 14px; height: 21px; animation-delay: 0.64s; }
+.petal-10 { left: 54%; width: 19px; height: 28px; animation-delay: 0.70s; }
+.petal-11 { left: 60%; width: 13px; height: 20px; animation-delay: 0.76s; }
+.petal-12 { left: 66%; width: 21px; height: 30px; animation-delay: 0.82s; }
+.petal-13 { left: 72%; width: 15px; height: 22px; animation-delay: 0.88s; }
+.petal-14 { left: 78%; width: 18px; height: 27px; animation-delay: 0.94s; }
+.petal-15 { left: 84%; width: 12px; height: 19px; animation-delay: 1.00s; }
+.petal-16 { left: 90%; width: 20px; height: 29px; animation-delay: 1.06s; }
+.petal-17 { left: 96%; width: 14px; height: 21px; animation-delay: 0.22s; }
+.petal-18 { left:  6%; width: 17px; height: 25px; animation-delay: 0.48s; }
+.petal-19 { left: 27%; width: 13px; height: 20px; animation-delay: 0.72s; }
+.petal-20 { left: 47%; width: 18px; height: 26px; animation-delay: 0.90s; }
+.petal-21 { left: 69%; width: 14px; height: 21px; animation-delay: 1.12s; }
+.petal-22 { left: 87%; width: 17px; height: 25px; animation-delay: 0.38s; }
 
 @keyframes realisticPetalFall {
-
   0% {
-
     transform:
-      translate3d(
-        0,
-        -80px,
-        0
-      )
+      translate3d(0, -60px, 0)
       rotateZ(0deg)
       rotateX(0deg)
       rotateY(0deg)
-      scale(0.65);
-
+      scale(0.72);
     opacity: 0;
   }
 
-
-  8% {
-
-    opacity: 0.95;
+  10% {
+    opacity: 0.98;
   }
 
-
-  20% {
-
+  30% {
     transform:
-      translate3d(
-        35px,
-        15vh,
-        0
-      )
-      rotateZ(95deg)
-      rotateX(35deg)
-      rotateY(40deg)
-      scale(0.95);
-
-    opacity: 0.95;
+      translate3d(42px, 27vh, 0)
+      rotateZ(135deg)
+      rotateX(45deg)
+      rotateY(70deg)
+      scale(1);
+    opacity: 0.96;
   }
-
-
-  38% {
-
-    transform:
-      translate3d(
-        -45px,
-        35vh,
-        0
-      )
-      rotateZ(190deg)
-      rotateX(80deg)
-      rotateY(110deg)
-      scale(0.82);
-  }
-
 
   55% {
-
     transform:
-      translate3d(
-        55px,
-        55vh,
-        0
-      )
-      rotateZ(275deg)
-      rotateX(135deg)
+      translate3d(-48px, 55vh, 0)
+      rotateZ(285deg)
+      rotateX(120deg)
       rotateY(170deg)
-      scale(1.05);
-  }
-
-
-  73% {
-
-    transform:
-      translate3d(
-        -35px,
-        75vh,
-        0
-      )
-      rotateZ(370deg)
-      rotateX(200deg)
-      rotateY(240deg)
       scale(0.88);
-
-    opacity: 0.75;
+    opacity: 0.82;
   }
 
-
-  88% {
-
+  78% {
     transform:
-      translate3d(
-        45px,
-        94vh,
-        0
-      )
-      rotateZ(470deg)
-      rotateX(260deg)
-      rotateY(310deg)
-      scale(0.8);
-
-    opacity: 0.45;
+      translate3d(52px, 82vh, 0)
+      rotateZ(430deg)
+      rotateX(210deg)
+      rotateY(270deg)
+      scale(0.92);
+    opacity: 0.55;
   }
-
 
   100% {
-
     transform:
-      translate3d(
-        -25px,
-        112vh,
-        0
-      )
-      rotateZ(560deg)
-      rotateX(320deg)
+      translate3d(-30px, 112vh, 0)
+      rotateZ(590deg)
+      rotateX(330deg)
       rotateY(360deg)
       scale(0.55);
-
     opacity: 0;
   }
-
 }
-
-
-/* =========================================================
-   MOBILE PETALS
-   ========================================================= */
 
 @media (max-width: 800px) {
-
   .real-petal {
-
-    transform-origin:
-      center center;
+    transform-origin: center center;
   }
-
 }
 
-
 @media (max-width: 500px) {
-
   .real-petal {
-
-    width: 13px;
-
-    height: 20px;
+    width: 12px;
+    height: 18px;
   }
-
 }
 
 /* =========================================================
@@ -2768,17 +2367,7 @@ footer small {
 
     height: 370px;
   }
-
-
-  .ganesha-rays span {
-
-    height: 175px;
-
-    width: 3px;
-  }
-
-
-  .ganesha-glow {
+.ganesha-glow {
 
     width: 310px;
 
@@ -2900,13 +2489,6 @@ footer small {
   }
 
 
-  /* Petals */
-
-  .fall-petal {
-    font-size: 16px;
-  }
-
-
   .petal-rain {
 
     left: -50vw;
@@ -2995,14 +2577,7 @@ footer small {
 
     height: 320px;
   }
-
-
-  .ganesha-rays span {
-    height: 150px;
-  }
-
-
-  .ganesha-glow {
+.ganesha-glow {
 
     width: 270px;
 
