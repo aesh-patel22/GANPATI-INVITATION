@@ -205,7 +205,7 @@ export default function Home() {
               <div className="ganesha-glow" />
 
               <img
-                src="/images/ganesha.webp"
+                src="/images/ganesha.jpeg"
                 alt="Ganpati Bappa"
                 className="ganesha-image"
               />
