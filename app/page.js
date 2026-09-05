@@ -766,7 +766,7 @@ export default function Home() {
 
 
                 <h3>
-                  Ganpati Arrival
+                  Ganpati Aagman
                 </h3>
 
 
@@ -804,10 +804,13 @@ export default function Home() {
                   Sthapana Muhurat
                 </h3>
 
-
                 <strong>
-                  11:30 AM
+                  14 September 2026
                 </strong>
+
+                <p className="event-time">
+                  11:30 AM
+                </p>
 
 
                 <p>
