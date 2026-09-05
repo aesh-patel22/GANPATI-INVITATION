@@ -483,6 +483,35 @@ export default function Home() {
               </div>
 
 
+              <div 
+  className="petal-rain" 
+  aria-hidden="true" 
+> 
+  <span className="real-petal white-petal petal-1" /> 
+  <span className="real-petal gold-petal petal-2" /> 
+  <span className="real-petal white-petal petal-3" /> 
+  <span className="real-petal gold-petal petal-4" /> 
+  <span className="real-petal white-petal petal-5" /> 
+  <span className="real-petal gold-petal petal-6" /> 
+  <span className="real-petal white-petal petal-7" /> 
+  <span className="real-petal gold-petal petal-8" /> 
+  <span className="real-petal white-petal petal-9" /> 
+  <span className="real-petal gold-petal petal-10" /> 
+  <span className="real-petal white-petal petal-11" /> 
+  <span className="real-petal gold-petal petal-12" /> 
+  <span className="real-petal white-petal petal-13" /> 
+  <span className="real-petal gold-petal petal-14" /> 
+  <span className="real-petal white-petal petal-15" /> 
+  <span className="real-petal gold-petal petal-16" /> 
+  <span className="real-petal white-petal petal-17" /> 
+  <span className="real-petal gold-petal petal-18" /> 
+  <span className="real-petal white-petal petal-19" /> 
+  <span className="real-petal gold-petal petal-20" /> 
+  <span className="real-petal white-petal petal-21" /> 
+  <span className="real-petal gold-petal petal-22" /> 
+  <span className="real-petal white-petal petal-23" /> 
+  <span className="real-petal gold-petal petal-24" /> 
+</div>
              
 
             <h2 className="reveal">
