@@ -82,17 +82,111 @@ export default function Home() {
             <p className="sanskrit reveal">॥ SHREE GANESHAYA NAMAHA ॥</p>
             <p className="eyebrow reveal">WITH DIVINE BLESSINGS</p>
             <h1 className="reveal">PATEL CHA RAJA</h1>
-            <div className="ganesha reveal" aria-label="Lord Ganesha decorative illustration">
-              <div className="halo" />
-              <div className="ganesha-symbol">ॐ</div>
-              <div className="pedestal">✦ GANPATI BAPPA MORYA ✦</div>
-            </div>
+            <div className="ganesha-image-wrap reveal">
+  <div className="ganesha-rays"></div>
+
+  <div className="ganesha-glow"></div>
+
+  <img
+    src="/images/ganesha.webp"
+    alt="Ganpati Bappa"
+    className="ganesha-image"
+  />
+
+  <div className="ganesha-pedestal">
+    ✦ GANPATI BAPPA MORYA ✦
+  </div>
+
+  <div className="floating-petal petal-one">❀</div>
+  <div className="floating-petal petal-two">✦</div>
+  <div className="floating-petal petal-three">❀</div>
+  <div className="floating-petal petal-four">✦</div>
+</div>
             <h2 className="reveal">You Are Cordially Invited</h2>
             <p className="intro reveal">The Patel Family warmly invites you to celebrate the arrival of Lord Ganesha and share this auspicious occasion with love, devotion and blessings.</p>
             <div className="marquee"><span>GANPATI BAPPA MORYA • MANGALMURTI MORYA • PATEL FAMILY WELCOMES YOU • </span></div>
           </section>
 
-          <section className="events section-pad">
+         <section className="schedule section-pad" id="schedule">
+
+  <div className="schedule-decoration schedule-decoration-left">
+    ॐ
+  </div>
+
+  <div className="schedule-decoration schedule-decoration-right">
+    ॐ
+  </div>
+
+  <p className="section-icon reveal">✦</p>
+
+  <p className="eyebrow reveal">
+    DAILY PUJA & AARTI
+  </p>
+
+  <h2 className="reveal">
+    Sacred Schedule
+  </h2>
+
+  <p className="schedule-intro reveal">
+    Join us in the divine celebrations and receive
+    the blessings of Bappa.
+  </p>
+
+  <div className="schedule-line"></div>
+
+  <div className="timeline">
+
+    {schedule.map((item, index) => (
+
+      <article
+        className="timeline-card reveal"
+        key={item.number}
+        style={{ "--delay": `${index * 0.15}s` }}
+      >
+
+        <div className="schedule-number">
+          {item.number}
+        </div>
+
+        <div className="schedule-diya">
+          🪔
+        </div>
+
+        <div className="schedule-content">
+
+          <div className="schedule-time">
+            {item.time}
+          </div>
+
+          <h3>
+            {item.title}
+          </h3>
+
+          <p>
+            {item.text}
+          </p>
+
+        </div>
+
+        <div className="card-corner corner-top"></div>
+        <div className="card-corner corner-bottom"></div>
+
+      </article>
+
+    ))}
+
+  </div>
+
+  <div className="schedule-blessing reveal">
+    <span>ॐ</span>
+    <p>
+      May Lord Ganesha bless us with wisdom,
+      happiness and prosperity.
+    </p>
+    <span>ॐ</span>
+  </div>
+
+</section>
             <p className="section-icon">❀</p>
             <p className="eyebrow reveal">THE AUSPICIOUS CELEBRATION</p>
             <h2 className="reveal">Arrival & Ceremony</h2>
