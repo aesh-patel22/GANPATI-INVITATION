@@ -4,19 +4,25 @@ import { useEffect, useRef, useState } from 'react';
 
 const schedule = [
   {
+    number: '01',
     time: '8:00 AM',
     title: 'Morning Aarti',
     text: 'Begin the day with peaceful darshan, puja and aarti.',
+    icon: 'diya',
   },
   {
+    number: '02',
     time: '12:00 PM',
     title: 'Mahaprasad',
     text: 'Join us for prasad and receive the blessings of Bappa.',
+    icon: 'food',
   },
   {
+    number: '03',
     time: '8:00 PM',
     title: 'Evening Aarti',
     text: 'Come together for devotion, lamps and the evening aarti.',
+    icon: 'diya',
   },
 ];
 
@@ -27,17 +33,12 @@ const family = [
   'Shiv Patel',
 ];
 
-
-/* =========================================================
-   GOLDEN ICONS
-   No external library required
-   ========================================================= */
-
 function CalendarIcon() {
   return (
     <svg
-      viewBox="0 0 64 64"
       className="event-icon-svg"
+      viewBox="0 0 64 64"
+      fill="none"
       aria-hidden="true"
     >
       <rect
@@ -46,22 +47,19 @@ function CalendarIcon() {
         width="40"
         height="38"
         rx="5"
-        fill="none"
         stroke="currentColor"
-        strokeWidth="4"
+        strokeWidth="3"
       />
 
       <path
-        d="M20 9v11M44 9v11M12 25h40"
-        fill="none"
+        d="M20 9V20M44 9V20M12 25H52"
         stroke="currentColor"
-        strokeWidth="4"
+        strokeWidth="3"
         strokeLinecap="round"
       />
 
       <path
-        d="M21 33h4M30 33h4M39 33h4M21 42h4M30 42h4M39 42h4"
-        fill="none"
+        d="M22 33H27M34 33H39M22 41H27M34 41H39"
         stroke="currentColor"
         strokeWidth="3"
         strokeLinecap="round"
@@ -70,160 +68,105 @@ function CalendarIcon() {
   );
 }
 
-
 function ClockIcon() {
   return (
     <svg
-      viewBox="0 0 64 64"
       className="event-icon-svg"
+      viewBox="0 0 64 64"
+      fill="none"
       aria-hidden="true"
     >
       <circle
         cx="32"
         cy="32"
         r="21"
-        fill="none"
         stroke="currentColor"
-        strokeWidth="4"
+        strokeWidth="3"
       />
 
       <path
-        d="M32 19v14l9 6"
-        fill="none"
+        d="M32 19V33L41 38"
         stroke="currentColor"
-        strokeWidth="4"
+        strokeWidth="3"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
     </svg>
   );
 }
-
 
 function LocationIcon() {
   return (
     <svg
-      viewBox="0 0 64 64"
       className="event-icon-svg"
+      viewBox="0 0 64 64"
+      fill="none"
       aria-hidden="true"
     >
       <path
-        d="M32 55s17-17.2 17-31a17 17 0 1 0-34 0c0 13.8 17 31 17 31Z"
-        fill="none"
+        d="M32 55C32 55 48 39 48 27C48 18.16 40.84 11 32 11C23.16 11 16 18.16 16 27C16 39 32 55 32 55Z"
         stroke="currentColor"
-        strokeWidth="4"
-        strokeLinejoin="round"
+        strokeWidth="3"
       />
 
       <circle
         cx="32"
-        cy="24"
-        r="5"
-        fill="none"
+        cy="27"
+        r="6"
         stroke="currentColor"
-        strokeWidth="4"
+        strokeWidth="3"
       />
     </svg>
   );
 }
-
 
 function FoodIcon() {
   return (
     <svg
+      className="event-icon-svg"
       viewBox="0 0 64 64"
-      className="schedule-food-icon"
+      fill="none"
       aria-hidden="true"
     >
-      {/* plate */}
-      <ellipse
-        cx="32"
-        cy="45"
-        rx="22"
-        ry="7"
-        fill="none"
+      <path
+        d="M14 39C14 29 22 22 32 22C42 22 50 29 50 39C50 45 42 49 32 49C22 49 14 45 14 39Z"
         stroke="currentColor"
         strokeWidth="3"
       />
 
-      {/* food bowl */}
       <path
-        d="M14 35h36"
-        fill="none"
+        d="M19 36H45M23 29C23 22 26 17 29 13M32 28V11M41 29C41 22 38 17 35 13"
         stroke="currentColor"
         strokeWidth="3"
         strokeLinecap="round"
       />
 
       <path
-        d="M17 35c1 9 7 14 15 14s14-5 15-14"
-        fill="none"
+        d="M10 49H54"
         stroke="currentColor"
         strokeWidth="3"
         strokeLinecap="round"
-      />
-
-      {/* food */}
-      <path
-        d="M20 32c1-6 5-9 8-9 2 0 3 2 4 4 1-5 4-8 7-7 3 1 4 5 4 12"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="3"
-        strokeLinecap="round"
-      />
-
-      {/* decorative food dots */}
-      <circle
-        cx="25"
-        cy="30"
-        r="2"
-        fill="currentColor"
-      />
-
-      <circle
-        cx="38"
-        cy="29"
-        r="2"
-        fill="currentColor"
       />
     </svg>
   );
 }
 
-
-/* =========================================================
-   MAIN PAGE
-   ========================================================= */
-
 export default function Home() {
-
   const [opened, setOpened] = useState(false);
   const [soundOn, setSoundOn] = useState(false);
 
   const audioRef = useRef(null);
 
-
-  /* =======================================================
-     REVEAL ANIMATION
-     ======================================================= */
-
   useEffect(() => {
-
     const reveal = () => {
-
-      document
-        .querySelectorAll('.reveal')
-        .forEach((el) => {
-
-          if (
-            el.getBoundingClientRect().top <
-            window.innerHeight - 80
-          ) {
-            el.classList.add('visible');
-          }
-
-        });
-
+      document.querySelectorAll('.reveal').forEach((el) => {
+        if (
+          el.getBoundingClientRect().top <
+          window.innerHeight - 80
+        ) {
+          el.classList.add('visible');
+        }
+      });
     };
 
     reveal();
@@ -231,9 +174,7 @@ export default function Home() {
     window.addEventListener(
       'scroll',
       reveal,
-      {
-        passive: true,
-      }
+      { passive: true }
     );
 
     return () => {
@@ -242,80 +183,48 @@ export default function Home() {
         reveal
       );
     };
-
   }, [opened]);
 
-
-  /* =======================================================
-     OPEN INVITATION + MUSIC
-     ======================================================= */
-
   const openInvitation = async () => {
-
     setOpened(true);
 
     setTimeout(() => {
-
       window.scrollTo({
         top: 0,
         behavior: 'smooth',
       });
-
     }, 50);
 
-
     try {
-
       await audioRef.current?.play();
-
       setSoundOn(true);
-
     } catch {
-
       setSoundOn(false);
-
     }
-
   };
-
-
-  /* =======================================================
-     MUSIC TOGGLE
-     ======================================================= */
 
   const toggleSound = async () => {
-
     if (!audioRef.current) return;
 
-
     if (soundOn) {
-
       audioRef.current.pause();
-
       setSoundOn(false);
-
     } else {
-
       try {
-
         await audioRef.current.play();
-
         setSoundOn(true);
-
-      } catch {}
-
+      } catch {
+        setSoundOn(false);
+      }
     }
-
   };
 
-
   return (
-
     <main>
 
-      {/* ===================================================
-          AUDIO
-          =================================================== */}
+      {/* =========================
+          BACKGROUND MUSIC
+          ========================= */}
 
       <audio
         ref={audioRef}
@@ -324,19 +233,16 @@ export default function Home() {
         preload="auto"
       />
 
-
-      {/* ===================================================
-          OPENING COVER
-          =================================================== */}
+      {/* =========================
+          COVER / OPEN INVITATION
+          ========================= */}
 
       {!opened && (
-
         <section className="cover">
 
           <div className="top-garland">
             ✦ ❀ ✦ ❀ ✦
           </div>
-
 
           <div className="cover-card">
 
@@ -344,31 +250,27 @@ export default function Home() {
               ॥ SHREE GANESHAYA NAMAHA ॥
             </p>
 
-
             <div className="om">
               ॐ
             </div>
-
 
             <p className="eyebrow">
               A JOYOUS INVITATION
             </p>
 
-
             <h1>
               PATEL CHA RAJA
             </h1>
 
-
             <div className="divider">
-              <span>✦</span>
+              <span>
+                ✦
+              </span>
             </div>
-
 
             <p className="family-name">
               PATEL FAMILY
             </p>
-
 
             <button
               className="primary"
@@ -379,25 +281,21 @@ export default function Home() {
 
           </div>
 
-
           <div className="cover-lotus">
             ❀
           </div>
 
         </section>
-
       )}
 
-
-      {/* ===================================================
-          INVITATION
-          =================================================== */}
+      {/* =========================
+          MAIN INVITATION
+          ========================= */}
 
       {opened && (
-
         <>
 
-          {/* MUSIC */}
+          {/* MUSIC BUTTON */}
 
           <button
             className="sound"
@@ -410,9 +308,9 @@ export default function Home() {
           </button>
 
 
-          {/* =================================================
+          {/* =========================
               HERO
-              ================================================= */}
+              ========================= */}
 
           <section className="hero section-pad">
 
@@ -420,104 +318,115 @@ export default function Home() {
 
             <div className="mandala m2" />
 
-
             <p className="sanskrit reveal">
               ॥ SHREE GANESHAYA NAMAHA ॥
             </p>
 
-
             <p className="eyebrow reveal">
               WITH DIVINE BLESSINGS
             </p>
-
 
             <h1 className="reveal">
               PATEL CHA RAJA
             </h1>
 
 
-            {/* =================================================
-                GANPATI
-                ================================================= */}
+            {/* GANPATI IMAGE */}
 
-            <div className="ganesha-image-wrap reveal">
+            <div
+              className="ganesha-image-wrap reveal"
+              aria-label="Lord Ganesha"
+            >
 
-              {/* rotating rays */}
+              {/* GOLDEN RAYS */}
 
-              <div className="ganesha-rays">
+              <div className="ganesha-rays" />
 
-                <span />
-                <span />
-                <span />
-                <span />
-                <span />
-                <span />
-                <span />
-                <span />
-                <span />
-                <span />
-                <span />
-                <span />
-
-              </div>
-
-
-              {/* glow */}
+              {/* GLOW */}
 
               <div className="ganesha-glow" />
 
 
-              {/* image */}
+              {/* GANPATI */}
 
               <img
-                src="/images/ganesha2.webp"
+                src="/images/ganesha.webp"
                 alt="Ganpati Bappa"
                 className="ganesha-image"
               />
 
 
-              {/* pedestal */}
+              {/* PEDESTAL */}
 
               <div className="ganesha-pedestal">
                 ✦ GANPATI BAPPA MORYA ✦
               </div>
 
 
-              <div 
-  className="petal-rain" 
-  aria-hidden="true" 
-> 
-  <span className="real-petal white-petal petal-1" /> 
-  <span className="real-petal gold-petal petal-2" /> 
-  <span className="real-petal white-petal petal-3" /> 
-  <span className="real-petal gold-petal petal-4" /> 
-  <span className="real-petal white-petal petal-5" /> 
-  <span className="real-petal gold-petal petal-6" /> 
-  <span className="real-petal white-petal petal-7" /> 
-  <span className="real-petal gold-petal petal-8" /> 
-  <span className="real-petal white-petal petal-9" /> 
-  <span className="real-petal gold-petal petal-10" /> 
-  <span className="real-petal white-petal petal-11" /> 
-  <span className="real-petal gold-petal petal-12" /> 
-  <span className="real-petal white-petal petal-13" /> 
-  <span className="real-petal gold-petal petal-14" /> 
-  <span className="real-petal white-petal petal-15" /> 
-  <span className="real-petal gold-petal petal-16" /> 
-  <span className="real-petal white-petal petal-17" /> 
-  <span className="real-petal gold-petal petal-18" /> 
-  <span className="real-petal white-petal petal-19" /> 
-  <span className="real-petal gold-petal petal-20" /> 
-  <span className="real-petal white-petal petal-21" /> 
-  <span className="real-petal gold-petal petal-22" /> 
-  <span className="real-petal white-petal petal-23" /> 
-  <span className="real-petal gold-petal petal-24" /> 
-</div>
-             
+              {/* =========================
+                  REALISTIC FALLING PETALS
+
+                  FALL ONLY ONCE
+                  APPROX 3–4 SECONDS
+                  ========================= */}
+
+              <div
+                className="petal-rain"
+                aria-hidden="true"
+              >
+
+                <span className="real-petal white-petal petal-1" />
+
+                <span className="real-petal gold-petal petal-2" />
+
+                <span className="real-petal white-petal petal-3" />
+
+                <span className="real-petal gold-petal petal-4" />
+
+                <span className="real-petal white-petal petal-5" />
+
+                <span className="real-petal gold-petal petal-6" />
+
+                <span className="real-petal white-petal petal-7" />
+
+                <span className="real-petal gold-petal petal-8" />
+
+                <span className="real-petal white-petal petal-9" />
+
+                <span className="real-petal gold-petal petal-10" />
+
+                <span className="real-petal white-petal petal-11" />
+
+                <span className="real-petal gold-petal petal-12" />
+
+                <span className="real-petal white-petal petal-13" />
+
+                <span className="real-petal gold-petal petal-14" />
+
+                <span className="real-petal white-petal petal-15" />
+
+                <span className="real-petal gold-petal petal-16" />
+
+                <span className="real-petal white-petal petal-17" />
+
+                <span className="real-petal gold-petal petal-18" />
+
+                <span className="real-petal white-petal petal-19" />
+
+                <span className="real-petal gold-petal petal-20" />
+
+                <span className="real-petal white-petal petal-21" />
+
+                <span className="real-petal gold-petal petal-22" />
+
+              </div>
+
+            </div>
+
 
             <h2 className="reveal">
               You Are Cordially Invited
             </h2>
-
 
             <p className="intro reveal">
               The Patel Family warmly invites you
@@ -526,6 +435,8 @@ export default function Home() {
               love, devotion and blessings.
             </p>
 
+
+            {/* MARQUEE */}
 
             <div className="marquee">
 
@@ -540,9 +451,9 @@ export default function Home() {
           </section>
 
 
-          {/* =================================================
+          {/* =========================
               SACRED SCHEDULE
-              ================================================= */}
+              ========================= */}
 
           <section
             className="schedule section-pad"
@@ -562,82 +473,75 @@ export default function Home() {
               ✦
             </p>
 
-
             <p className="eyebrow reveal">
-              DAILY PUJA & AARTI
+              DAILY PUJA &amp; AARTI
             </p>
-
 
             <h2 className="reveal">
               Sacred Schedule
             </h2>
-
 
             <p className="schedule-intro reveal">
               Join us in the divine celebrations
               and receive the blessings of Bappa.
             </p>
 
-
             <div className="schedule-line" />
 
 
             <div className="timeline">
 
-              {schedule.map((item, index) => (
+              {schedule.map(
+                (item, index) => (
 
-                <article
-                  className="timeline-card reveal"
-                  key={item.number}
-                  style={{
-                    '--delay': `${index * 0.15}s`,
-                  }}
-                >
+                  <article
+                    className="timeline-card reveal"
+                    key={item.number}
+                    style={{
+                      '--delay':
+                        `${index * 0.15}s`,
+                    }}
+                  >
 
-                  <div className="schedule-number">
-                    {item.number}
-                  </div>
-
-
-                  {/* =========================================
-                      FOOD ICON ONLY FOR MAHAPRASAD
-                      ========================================= */}
-
-                  <div className="schedule-diya">
-
-                    {item.title === 'Mahaprasad'
-                      ? <FoodIcon />
-                      : '🪔'}
-
-                  </div>
-
-
-                  <div className="schedule-content">
-
-                    <div className="schedule-time">
-                      {item.time}
+                    <div className="schedule-number">
+                      {item.number}
                     </div>
 
 
-                    <h3>
-                      {item.title}
-                    </h3>
+                    <div className="schedule-diya">
+
+                      {item.icon === 'food'
+                        ? <FoodIcon />
+                        : '🪔'}
+
+                    </div>
 
 
-                    <p>
-                      {item.text}
-                    </p>
+                    <div className="schedule-content">
 
-                  </div>
+                      <div className="schedule-time">
+                        {item.time}
+                      </div>
+
+                      <h3>
+                        {item.title}
+                      </h3>
+
+                      <p>
+                        {item.text}
+                      </p>
+
+                    </div>
 
 
-                  <div className="card-corner corner-top" />
+                    <div className="card-corner corner-top" />
 
-                  <div className="card-corner corner-bottom" />
+                    <div className="card-corner corner-bottom" />
 
-                </article>
+                  </article>
 
-              ))}
+                )
+              )}
 
             </div>
 
@@ -648,12 +552,10 @@ export default function Home() {
                 ॐ
               </span>
 
-
               <p>
                 May Lord Ganesha bless us
                 with wisdom, happiness and prosperity.
               </p>
-
 
               <span>
                 ॐ
@@ -664,55 +566,47 @@ export default function Home() {
           </section>
 
 
-          {/* =================================================
+          {/* =========================
               ARRIVAL & CEREMONY
-              ================================================= */}
+              ========================= */}
 
           <section className="events section-pad">
 
-            <p className="section-icon reveal">
+            <p className="section-icon">
               ❀
             </p>
-
 
             <p className="eyebrow reveal">
               THE AUSPICIOUS CELEBRATION
             </p>
 
-
             <h2 className="reveal">
-              Arrival & Ceremony
+              Arrival &amp; Ceremony
             </h2>
 
 
             <div className="event-grid">
 
 
-              {/* =============================================
-                  ARRIVAL
-                  ============================================= */}
+              {/* GANPATI ARRIVAL */}
 
               <article className="royal-card reveal">
 
-                <div className="event-icon">
-
-                  <CalendarIcon />
-
+                <div className="event-number">
+                  01
                 </div>
 
-
-              
-
+                <div className="event-icon">
+                  <CalendarIcon />
+                </div>
 
                 <h3>
-                  Ganpati Aagman
+                  Ganpati Arrival
                 </h3>
-
 
                 <strong>
                   13 September 2026
                 </strong>
-
 
                 <p className="event-time">
                   8:30 PM
@@ -721,63 +615,53 @@ export default function Home() {
               </article>
 
 
-              {/* =============================================
-                  STHAPANA
-                  ============================================= */}
+              {/* STHAPANA */}
 
               <article className="royal-card reveal">
 
-                <div className="event-icon">
-
-                  <ClockIcon />
-
+                <div className="event-number">
+                  02
                 </div>
 
-
-            
-
+                <div className="event-icon">
+                  <ClockIcon />
+                </div>
 
                 <h3>
                   Sthapana Muhurat
                 </h3>
 
                 <strong>
-                  14 September 2026
+                  11:30 AM
                 </strong>
 
-                <p className="event-time">
-                  11:30 AM
+                <p>
+                  A sacred beginning with
+                  prayers and blessings
                 </p>
-
 
               </article>
 
 
-              {/* =============================================
-                  VENUE
-                  ============================================= */}
+              {/* VENUE */}
 
               <article className="royal-card reveal">
 
-                <div className="event-icon">
-
-                  <LocationIcon />
-
+                <div className="event-number">
+                  03
                 </div>
 
-
-              
-
+                <div className="event-icon">
+                  <LocationIcon />
+                </div>
 
                 <h3>
                   Celebration Venue
                 </h3>
 
-
                 <strong>
                   Patel Residency
                 </strong>
-
 
                 <p>
                   B-503, Madhuvan Campus,
@@ -802,26 +686,23 @@ export default function Home() {
           </section>
 
 
-          {/* =================================================
+          {/* =========================
               FAMILY
-              ================================================= */}
+              ========================= */}
 
           <section className="family section-pad">
 
-            <p className="section-icon reveal">
+            <p className="section-icon">
               ❀
             </p>
-
 
             <p className="eyebrow reveal">
               YOUR GRACIOUS HOSTS
             </p>
 
-
             <h2 className="reveal">
               Patel Family
             </h2>
-
 
             <p className="subtitle reveal">
               We look forward to welcoming you
@@ -831,65 +712,63 @@ export default function Home() {
 
             <div className="family-grid">
 
-              {family.map((name) => (
+              {family.map(
+                (name) => (
 
-                <article
-                  className="member reveal"
-                  key={name}
-                >
+                  <article
+                    className="member reveal"
+                    key={name}
+                  >
 
-                  <div className="avatar">
+                    <div className="avatar">
 
-                    {name
-                      .split(' ')
-                      .map((x) => x[0])
-                      .join('')}
+                      {name
+                        .split(' ')
+                        .map((x) => x[0])
+                        .join('')}
 
-                  </div>
+                    </div>
 
+                    <h3>
+                      {name}
+                    </h3>
 
-                  <h3>
-                    {name}
-                  </h3>
+                    <p>
+                      Host
+                    </p>
 
+                  </article>
 
-                  <p>
-                    Host
-                  </p>
-
-                </article>
-
-              ))}
+                )
+              )}
 
             </div>
 
           </section>
 
 
-          {/* =================================================
+          {/* =========================
               GALLERY
-              ================================================= */}
+              ========================= */}
 
           <section className="gallery section-pad">
 
-            <p className="section-icon reveal">
+            <p className="section-icon">
               ✧
             </p>
-
 
             <p className="eyebrow reveal">
               CELEBRATION MEMORIES
             </p>
 
-
             <h2 className="reveal">
               Photo Gallery
             </h2>
 
-
             <p className="subtitle reveal">
-              Replace these placeholders with your
-              Ganpati, family and decoration photographs.
+              Replace these placeholders with
+              your Ganpati, family and
+              decoration photographs.
             </p>
 
 
@@ -902,34 +781,35 @@ export default function Home() {
                 'Aarti Photo',
                 'Mahaprasad Photo',
                 'Celebration Photo',
-              ].map((label, i) => (
+              ].map(
+                (label, i) => (
 
-                <div
-                  className={`photo p${i + 1} reveal`}
-                  key={label}
-                >
+                  <div
+                    className={`photo p${i + 1} reveal`}
+                    key={label}
+                  >
 
-                  <span>
-                    ✦
-                  </span>
+                    <span>
+                      ✦
+                    </span>
 
+                    <p>
+                      {label}
+                    </p>
 
-                  <p>
-                    {label}
-                  </p>
+                  </div>
 
-                </div>
-
-              ))}
+                )
+              )}
 
             </div>
 
           </section>
 
 
-          {/* =================================================
+          {/* =========================
               RSVP
-              ================================================= */}
+              ========================= */}
 
           <section className="rsvp section-pad">
 
@@ -939,37 +819,35 @@ export default function Home() {
                 ॐ
               </p>
 
-
               <p className="eyebrow">
-                BLESSINGS & RSVP
+                BLESSINGS &amp; RSVP
               </p>
-
 
               <h2>
                 We Await Your Presence
               </h2>
 
-
               <p>
-                Your presence will make this celebration
-                even more joyful and memorable.
+                Your presence will make this
+                celebration even more joyful
+                and memorable.
               </p>
 
 
               <a
                 className="primary disabled"
                 href="#"
-                onClick={(e) => {
-                  e.preventDefault();
-                }}
+                onClick={(e) =>
+                  e.preventDefault()
+                }
               >
                 WhatsApp RSVP — Add Number
               </a>
 
 
               <small>
-                Edit the WhatsApp number later inside
-                <b> app/page.js</b>.
+                Edit the WhatsApp number later
+                inside <b>app/page.js</b>.
               </small>
 
             </div>
@@ -977,9 +855,9 @@ export default function Home() {
           </section>
 
 
-          {/* =================================================
+          {/* =========================
               FOOTER
-              ================================================= */}
+              ========================= */}
 
           <footer>
 
@@ -987,21 +865,17 @@ export default function Home() {
               Until We Meet...
             </p>
 
-
             <h2>
               GANPATI BAPPA MORYA
             </h2>
-
 
             <div className="footer-om">
               ॐ
             </div>
 
-
             <p>
               MANGALMURTI MORYA
             </p>
-
 
             <small>
               Made with devotion and love
@@ -1011,10 +885,8 @@ export default function Home() {
           </footer>
 
         </>
-
       )}
 
     </main>
-
   );
 }
