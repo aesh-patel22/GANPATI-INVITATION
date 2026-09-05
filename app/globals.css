@@ -978,221 +978,396 @@ main {
 
 
 /* =========================================================
-   FALLING PETALS
-   ONLY 3 SECONDS
+   REALISTIC ROSE PETALS
+   WHITE + EXISTING GOLD TEXT COLOR
    ========================================================= */
 
 .petal-rain {
 
   position: absolute;
 
-  top: -100px;
+  top: -120px;
 
   left: -50vw;
 
   width: 100vw;
 
-  height:
-    calc(100% + 600px);
+  height: calc(100% + 700px);
 
   pointer-events: none;
 
   overflow: visible;
 
-  z-index: 30;
+  z-index: 40;
 }
 
 
-.fall-petal {
+/* =========================================================
+   BASIC PETAL SHAPE
+   ========================================================= */
+
+.real-petal {
 
   position: absolute;
 
   top: -80px;
 
-  color:
-    #e7c56f;
+  display: block;
 
-  font-size: 20px;
+  width: 17px;
+
+  height: 25px;
+
+  border-radius:
+    75% 25% 70% 30%
+    / 60% 35% 65% 40%;
+
+  transform-origin:
+    center center;
 
   opacity: 0;
 
-  text-shadow:
-    0 0 6px
-    rgba(255, 210, 100, 0.55),
-
-    0 0 15px
-    rgba(255, 177, 50, 0.25);
-
-  animation-name:
-    fallingPetal;
-
-  animation-duration:
-    3s;
-
-  animation-timing-function:
-    ease-in;
-
-  animation-iteration-count:
-    1;
-
-  animation-fill-mode:
+  animation:
+    realisticPetalFall
+    3.8s
+    cubic-bezier(.22,.61,.36,1)
+    1
     forwards;
 
   will-change:
-    transform;
+    transform,
+    opacity;
+
+  filter:
+    blur(0.1px);
+
 }
 
 
 /* =========================================================
-   PETAL POSITIONS
+   WHITE / CREAM ROSE PETAL
+   ========================================================= */
+
+.white-petal {
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #fffaf0 28%,
+      #f4e9d0 62%,
+      #d8c7a5 100%
+    );
+
+  box-shadow:
+
+    inset 2px 2px 3px
+    rgba(255,255,255,0.95),
+
+    inset -3px -4px 5px
+    rgba(126,104,72,0.18),
+
+    0 2px 8px
+    rgba(255,255,255,0.25);
+}
+
+
+/* =========================================================
+   GOLD PETAL
+   SAME FAMILY AS TEXT
+   ========================================================= */
+
+.gold-petal {
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffe7a0 0%,
+      #f4d27a 25%,
+      #d8a83e 60%,
+      #9d6b19 100%
+    );
+
+  box-shadow:
+
+    inset 2px 2px 3px
+    rgba(255,235,170,0.8),
+
+    inset -3px -4px 5px
+    rgba(94,54,8,0.25),
+
+    0 2px 8px
+    rgba(216,168,62,0.35);
+}
+
+
+/* =========================================================
+   PETAL VEIN
+   ========================================================= */
+
+.real-petal::after {
+
+  content: '';
+
+  position: absolute;
+
+  left: 50%;
+
+  top: 10%;
+
+  width: 1px;
+
+  height: 78%;
+
+  transform:
+    translateX(-50%)
+    rotate(-7deg);
+
+  background:
+    linear-gradient(
+      to bottom,
+      transparent,
+      rgba(255,255,255,0.65),
+      rgba(116,79,27,0.25),
+      transparent
+    );
+
+  opacity: 0.65;
+}
+
+
+/* =========================================================
+   DIFFERENT PETAL SIZES
    ========================================================= */
 
 .petal-1 {
-  left: 4%;
-  font-size: 18px;
-  animation-delay: 0s;
+  left: 3%;
+  width: 13px;
+  height: 20px;
+  animation-delay: 0.05s;
 }
 
 .petal-2 {
-  left: 10%;
-  font-size: 25px;
-  animation-delay: 0.08s;
-}
-
-.petal-3 {
-  left: 17%;
-  font-size: 14px;
+  left: 8%;
+  width: 19px;
+  height: 27px;
   animation-delay: 0.15s;
 }
 
-.petal-4 {
-  left: 25%;
-  font-size: 22px;
-  animation-delay: 0.22s;
-}
-
-.petal-5 {
-  left: 32%;
-  font-size: 16px;
+.petal-3 {
+  left: 13%;
+  width: 12px;
+  height: 18px;
   animation-delay: 0.30s;
 }
 
+.petal-4 {
+  left: 18%;
+  width: 21px;
+  height: 30px;
+  animation-delay: 0.40s;
+}
+
+.petal-5 {
+  left: 24%;
+  width: 15px;
+  height: 23px;
+  animation-delay: 0.52s;
+}
+
 .petal-6 {
-  left: 40%;
-  font-size: 27px;
-  animation-delay: 0.38s;
+  left: 29%;
+  width: 18px;
+  height: 26px;
+  animation-delay: 0.65s;
 }
 
 .petal-7 {
-  left: 47%;
-  font-size: 17px;
-  animation-delay: 0.46s;
+  left: 35%;
+  width: 12px;
+  height: 19px;
+  animation-delay: 0.75s;
 }
 
 .petal-8 {
-  left: 54%;
-  font-size: 24px;
-  animation-delay: 0.54s;
+  left: 40%;
+  width: 20px;
+  height: 29px;
+  animation-delay: 0.90s;
 }
 
 .petal-9 {
-  left: 61%;
-  font-size: 15px;
-  animation-delay: 0.62s;
+  left: 46%;
+  width: 14px;
+  height: 21px;
+  animation-delay: 1.00s;
 }
 
 .petal-10 {
-  left: 68%;
-  font-size: 26px;
-  animation-delay: 0.70s;
+  left: 51%;
+  width: 19px;
+  height: 28px;
+  animation-delay: 1.12s;
 }
 
 .petal-11 {
-  left: 74%;
-  font-size: 18px;
-  animation-delay: 0.78s;
+  left: 57%;
+  width: 13px;
+  height: 20px;
+  animation-delay: 1.20s;
 }
 
 .petal-12 {
-  left: 80%;
-  font-size: 23px;
-  animation-delay: 0.86s;
+  left: 62%;
+  width: 21px;
+  height: 30px;
+  animation-delay: 1.30s;
 }
 
 .petal-13 {
-  left: 86%;
-  font-size: 15px;
-  animation-delay: 0.94s;
+  left: 68%;
+  width: 15px;
+  height: 22px;
+  animation-delay: 1.42s;
 }
 
 .petal-14 {
-  left: 91%;
-  font-size: 27px;
-  animation-delay: 1.02s;
+  left: 73%;
+  width: 18px;
+  height: 27px;
+  animation-delay: 1.52s;
 }
 
 .petal-15 {
-  left: 96%;
-  font-size: 17px;
-  animation-delay: 1.10s;
+  left: 78%;
+  width: 12px;
+  height: 19px;
+  animation-delay: 1.62s;
 }
 
 .petal-16 {
-  left: 21%;
-  font-size: 20px;
-  animation-delay: 1.18s;
+  left: 83%;
+  width: 20px;
+  height: 29px;
+  animation-delay: 1.72s;
 }
 
 .petal-17 {
-  left: 58%;
-  font-size: 19px;
-  animation-delay: 1.26s;
+  left: 88%;
+  width: 14px;
+  height: 21px;
+  animation-delay: 1.84s;
 }
 
 .petal-18 {
-  left: 88%;
-  font-size: 21px;
-  animation-delay: 1.34s;
+  left: 94%;
+  width: 19px;
+  height: 28px;
+  animation-delay: 1.94s;
+}
+
+.petal-19 {
+  left: 16%;
+  width: 17px;
+  height: 25px;
+  animation-delay: 2.05s;
+}
+
+.petal-20 {
+  left: 44%;
+  width: 13px;
+  height: 20px;
+  animation-delay: 2.15s;
+}
+
+.petal-21 {
+  left: 59%;
+  width: 18px;
+  height: 26px;
+  animation-delay: 2.25s;
+}
+
+.petal-22 {
+  left: 76%;
+  width: 14px;
+  height: 21px;
+  animation-delay: 2.35s;
+}
+
+.petal-23 {
+  left: 91%;
+  width: 17px;
+  height: 25px;
+  animation-delay: 2.45s;
+}
+
+.petal-24 {
+  left: 32%;
+  width: 20px;
+  height: 29px;
+  animation-delay: 2.55s;
 }
 
 
 /* =========================================================
-   PETAL ANIMATION
+   REALISTIC FALLING MOTION
+   PETALS STOP AFTER ONE FALL
    ========================================================= */
 
-@keyframes fallingPetal {
+@keyframes realisticPetalFall {
 
   0% {
 
     transform:
       translate3d(
         0,
-        -100px,
+        -80px,
         0
       )
-      rotate(0deg)
-      scale(0.7);
+      rotateZ(0deg)
+      rotateX(0deg)
+      rotateY(0deg)
+      scale(0.65);
 
     opacity: 0;
   }
 
 
-  10% {
+  8% {
 
     opacity: 0.95;
   }
 
 
-  30% {
+  20% {
 
     transform:
       translate3d(
         35px,
-        30vh,
+        15vh,
         0
       )
-      rotate(110deg)
-      scale(1);
+      rotateZ(95deg)
+      rotateX(35deg)
+      rotateY(40deg)
+      scale(0.95);
+
+    opacity: 0.95;
+  }
+
+
+  38% {
+
+    transform:
+      translate3d(
+        -45px,
+        35vh,
+        0
+      )
+      rotateZ(190deg)
+      rotateX(80deg)
+      rotateY(110deg)
+      scale(0.82);
   }
 
 
@@ -1200,27 +1375,48 @@ main {
 
     transform:
       translate3d(
-        -45px,
-        58vh,
+        55px,
+        55vh,
         0
       )
-      rotate(220deg)
-      scale(0.85);
+      rotateZ(275deg)
+      rotateX(135deg)
+      rotateY(170deg)
+      scale(1.05);
   }
 
 
-  80% {
+  73% {
 
     transform:
       translate3d(
-        55px,
-        85vh,
+        -35px,
+        75vh,
         0
       )
-      rotate(320deg)
-      scale(1.05);
+      rotateZ(370deg)
+      rotateX(200deg)
+      rotateY(240deg)
+      scale(0.88);
 
-    opacity: 0.7;
+    opacity: 0.75;
+  }
+
+
+  88% {
+
+    transform:
+      translate3d(
+        45px,
+        94vh,
+        0
+      )
+      rotateZ(470deg)
+      rotateX(260deg)
+      rotateY(310deg)
+      scale(0.8);
+
+    opacity: 0.45;
   }
 
 
@@ -1228,17 +1424,46 @@ main {
 
     transform:
       translate3d(
-        -30px,
-        110vh,
+        -25px,
+        112vh,
         0
       )
-      rotate(430deg)
-      scale(0.65);
+      rotateZ(560deg)
+      rotateX(320deg)
+      rotateY(360deg)
+      scale(0.55);
 
     opacity: 0;
   }
+
 }
 
+
+/* =========================================================
+   MOBILE PETALS
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+  .real-petal {
+
+    transform-origin:
+      center center;
+  }
+
+}
+
+
+@media (max-width: 500px) {
+
+  .real-petal {
+
+    width: 13px;
+
+    height: 20px;
+  }
+
+}
 
 /* =========================================================
    HERO INTRO
