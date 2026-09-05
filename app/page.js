@@ -473,7 +473,7 @@ export default function Home() {
               {/* image */}
 
               <img
-                src="/images/ganesha.webp"
+                src="/images/ganesha2.webp"
                 alt="Ganpati Bappa"
                 className="ganesha-image"
               />
