@@ -39,3 +39,548 @@ footer { background:#1c0105; color:var(--cream); text-align:center; padding:80px
 @keyframes spin{to{transform:rotate(360deg)}}@keyframes marquee{to{transform:translateX(-50%)}}
 @media(max-width:900px){.event-grid{grid-template-columns:1fr}.family-grid{grid-template-columns:repeat(2,1fr)}.timeline-row{grid-template-columns:50px 2px 100px 1fr;gap:14px}.gallery-grid{grid-auto-rows:160px}}
 @media(max-width:600px){.section-pad{padding:78px 18px}.cover{padding:18px}.cover-card{padding:48px 18px}.cover h1{font-size:2.6rem}.divider:before,.divider:after{width:35px;margin:0 8px}.sound{top:12px;right:12px;font-size:.8rem}.ganesha-symbol{font-size:5rem}.family-grid{grid-template-columns:1fr 1fr;gap:12px}.avatar{width:82px;height:82px}.timeline-row{grid-template-columns:48px 1fr;gap:12px;padding:20px 0}.timeline-row .line{display:none}.timeline-row .time{grid-column:2}.timeline-row div:last-child{grid-column:2}.gallery-grid{display:grid;grid-template-columns:1fr;grid-auto-rows:200px}.photo{grid-column:1!important}.rsvp-card{padding:40px 20px}}
+/* =========================================================
+   GANPATI IMAGE
+   ========================================================= */
+
+.ganesha-image-wrap {
+  width: min(480px, 88vw);
+  aspect-ratio: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 25px auto 45px;
+}
+
+.ganesha-image {
+  width: 78%;
+  height: 78%;
+  object-fit: contain;
+  position: relative;
+  z-index: 4;
+  filter:
+    drop-shadow(0 20px 25px rgba(0,0,0,.45))
+    drop-shadow(0 0 25px rgba(244,212,134,.35));
+  animation: ganeshaFloat 5s ease-in-out infinite;
+  transition: transform .5s ease, filter .5s ease;
+}
+
+.ganesha-image:hover {
+  transform: scale(1.04) translateY(-5px);
+  filter:
+    drop-shadow(0 25px 35px rgba(0,0,0,.5))
+    drop-shadow(0 0 45px rgba(244,212,134,.65));
+}
+
+/* Golden glowing circle behind Ganpati */
+
+.ganesha-glow {
+  position: absolute;
+  width: 72%;
+  height: 72%;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,226,150,.65) 0%,
+      rgba(217,164,65,.25) 38%,
+      transparent 70%
+    );
+  filter: blur(8px);
+  animation: glowPulse 3s ease-in-out infinite;
+  z-index: 1;
+}
+
+/* Rotating golden rays */
+
+.ganesha-rays {
+  position: absolute;
+  width: 92%;
+  height: 92%;
+  border-radius: 50%;
+  background:
+    repeating-conic-gradient(
+      from 0deg,
+      rgba(217,164,65,.75) 0deg 2deg,
+      transparent 2deg 13deg
+    );
+  -webkit-mask-image: radial-gradient(
+    circle,
+    transparent 0 57%,
+    black 58% 63%,
+    transparent 64%
+  );
+  mask-image: radial-gradient(
+    circle,
+    transparent 0 57%,
+    black 58% 63%,
+    transparent 64%
+  );
+  animation: rotateRays 35s linear infinite;
+  z-index: 2;
+}
+
+/* Golden pedestal */
+
+.ganesha-pedestal {
+  position: absolute;
+  bottom: -5px;
+  z-index: 7;
+  background: linear-gradient(
+    135deg,
+    #2a0309,
+    #570a1d,
+    #2a0309
+  );
+  border: 1px solid var(--gold);
+  color: var(--light-gold);
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-family: 'Cinzel', serif;
+  font-size: .72rem;
+  letter-spacing: .13em;
+  white-space: nowrap;
+  box-shadow:
+    0 8px 30px rgba(0,0,0,.45),
+    0 0 25px rgba(217,164,65,.18);
+}
+
+/* Floating decorations */
+
+.floating-petal {
+  position: absolute;
+  color: var(--light-gold);
+  font-size: 1.5rem;
+  z-index: 8;
+  text-shadow: 0 0 15px rgba(244,212,134,.8);
+  animation: floatingPetal 4s ease-in-out infinite;
+}
+
+.petal-one {
+  left: 7%;
+  top: 28%;
+  animation-delay: 0s;
+}
+
+.petal-two {
+  right: 7%;
+  top: 22%;
+  animation-delay: 1s;
+}
+
+.petal-three {
+  left: 14%;
+  bottom: 22%;
+  animation-delay: 2s;
+}
+
+.petal-four {
+  right: 13%;
+  bottom: 28%;
+  animation-delay: 3s;
+}
+
+
+/* =========================================================
+   SACRED SCHEDULE
+   ========================================================= */
+
+.schedule {
+  background:
+    radial-gradient(
+      circle at 50% 15%,
+      #74152c 0%,
+      #4b0715 42%,
+      #240208 100%
+    );
+  color: var(--cream);
+  position: relative;
+}
+
+.schedule::before {
+  content: '';
+  position: absolute;
+  inset: 20px;
+  border: 1px solid rgba(217,164,65,.12);
+  pointer-events: none;
+}
+
+.schedule::after {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(217,164,65,.08);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 45px rgba(217,164,65,.025),
+    0 0 0 90px rgba(217,164,65,.018);
+  pointer-events: none;
+}
+
+.schedule h2 {
+  color: var(--light-gold);
+  position: relative;
+  z-index: 2;
+}
+
+.schedule-intro {
+  max-width: 600px;
+  margin: 10px auto 25px;
+  color: rgba(255,244,220,.78);
+  position: relative;
+  z-index: 2;
+}
+
+.schedule-decoration {
+  position: absolute;
+  color: rgba(217,164,65,.12);
+  font-size: 10rem;
+  font-family: serif;
+  pointer-events: none;
+}
+
+.schedule-decoration-left {
+  left: -35px;
+  top: 60px;
+  transform: rotate(-15deg);
+}
+
+.schedule-decoration-right {
+  right: -35px;
+  bottom: 80px;
+  transform: rotate(15deg);
+}
+
+.schedule-line {
+  width: 90px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--gold),
+    transparent
+  );
+  margin: 28px auto 45px;
+}
+
+.timeline {
+  max-width: 920px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 3;
+}
+
+/* Schedule cards */
+
+.timeline-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 70px 65px 1fr;
+  align-items: center;
+  gap: 20px;
+  text-align: left;
+  margin: 22px 0;
+  padding: 25px 30px;
+  border: 1px solid rgba(217,164,65,.48);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,244,220,.075),
+      rgba(255,244,220,.025)
+    );
+  backdrop-filter: blur(8px);
+  box-shadow:
+    0 15px 40px rgba(0,0,0,.22),
+    inset 0 0 30px rgba(217,164,65,.025);
+  overflow: hidden;
+  transition:
+    transform .5s ease,
+    box-shadow .5s ease,
+    border-color .5s ease;
+  animation-delay: var(--delay);
+}
+
+.timeline-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      120deg,
+      transparent 30%,
+      rgba(244,212,134,.09),
+      transparent 70%
+    );
+  transform: translateX(-100%);
+  transition: transform .8s ease;
+}
+
+.timeline-card:hover {
+  transform: translateY(-7px) scale(1.01);
+  border-color: var(--light-gold);
+  box-shadow:
+    0 20px 55px rgba(0,0,0,.4),
+    0 0 35px rgba(217,164,65,.15),
+    inset 0 0 35px rgba(217,164,65,.05);
+}
+
+.timeline-card:hover::before {
+  transform: translateX(100%);
+}
+
+/* Number */
+
+.schedule-number {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--gold);
+  color: var(--light-gold);
+  font-family: 'Cinzel', serif;
+  font-size: .85rem;
+  background:
+    radial-gradient(
+      circle,
+      rgba(217,164,65,.16),
+      transparent 70%
+    );
+  box-shadow:
+    0 0 20px rgba(217,164,65,.12);
+  position: relative;
+  z-index: 2;
+}
+
+.schedule-number::after {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgba(244,212,134,.25);
+  border-radius: 50%;
+}
+
+/* Diya */
+
+.schedule-diya {
+  font-size: 2.4rem;
+  text-align: center;
+  filter:
+    drop-shadow(0 0 10px rgba(244,180,60,.5));
+  animation: diyaGlow 2.5s ease-in-out infinite;
+}
+
+/* Content */
+
+.schedule-content {
+  position: relative;
+  z-index: 2;
+}
+
+.schedule-time {
+  color: var(--light-gold);
+  font-family: 'Cinzel', serif;
+  font-size: .78rem;
+  letter-spacing: .18em;
+  margin-bottom: 5px;
+}
+
+.schedule-content h3 {
+  color: var(--cream);
+  font-size: 1.5rem;
+  margin: 4px 0;
+}
+
+.schedule-content p {
+  color: rgba(255,244,220,.7);
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* Decorative card corners */
+
+.card-corner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-color: var(--gold);
+  opacity: .7;
+}
+
+.corner-top {
+  top: 8px;
+  left: 8px;
+  border-top: 1px solid;
+  border-left: 1px solid;
+}
+
+.corner-bottom {
+  bottom: 8px;
+  right: 8px;
+  border-bottom: 1px solid;
+  border-right: 1px solid;
+}
+
+/* Bottom blessing */
+
+.schedule-blessing {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 22px;
+  max-width: 700px;
+  margin: 55px auto 0;
+  color: rgba(255,244,220,.72);
+  position: relative;
+  z-index: 3;
+}
+
+.schedule-blessing span {
+  color: var(--gold);
+  font-size: 2rem;
+}
+
+.schedule-blessing p {
+  font-size: 1rem;
+  font-style: italic;
+  margin: 0;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes ganeshaFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    transform: scale(.95);
+    opacity: .65;
+  }
+
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+@keyframes rotateRays {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes floatingPetal {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: .6;
+  }
+
+  50% {
+    transform: translateY(-18px) rotate(15deg);
+    opacity: 1;
+  }
+}
+
+@keyframes diyaGlow {
+  0%, 100% {
+    transform: scale(1);
+    filter:
+      drop-shadow(0 0 7px rgba(244,180,60,.35));
+  }
+
+  50% {
+    transform: scale(1.12);
+    filter:
+      drop-shadow(0 0 18px rgba(244,180,60,.8));
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .ganesha-image-wrap {
+    width: min(390px, 95vw);
+    margin-top: 15px;
+    margin-bottom: 40px;
+  }
+
+  .ganesha-image {
+    width: 82%;
+    height: 82%;
+  }
+
+  .ganesha-pedestal {
+    font-size: .58rem;
+    padding: 10px 16px;
+    letter-spacing: .08em;
+  }
+
+  .timeline-card {
+    grid-template-columns: 50px 1fr;
+    gap: 15px;
+    padding: 22px 18px;
+  }
+
+  .schedule-number {
+    width: 50px;
+    height: 50px;
+    grid-row: span 2;
+  }
+
+  .schedule-diya {
+    display: none;
+  }
+
+  .schedule-content h3 {
+    font-size: 1.25rem;
+  }
+
+  .schedule-content p {
+    font-size: .95rem;
+  }
+
+  .schedule-decoration {
+    font-size: 6rem;
+  }
+
+  .schedule-decoration-left {
+    left: -25px;
+    top: 35px;
+  }
+
+  .schedule-decoration-right {
+    right: -25px;
+    bottom: 35px;
+  }
+
+  .schedule-blessing {
+    gap: 10px;
+  }
+
+  .schedule-blessing p {
+    font-size: .9rem;
+  }
+}
