@@ -4,21 +4,21 @@ import { useEffect, useRef, useState } from 'react';
 
 const schedule = [
   {
-    number: '01',
+ 
     time: '8:00 AM',
     title: 'Morning Aarti',
     text: 'Begin the day with peaceful darshan, puja and aarti.',
     icon: 'diya',
   },
   {
-    number: '02',
+   
     time: '12:00 PM',
     title: 'Mahaprasad',
     text: 'Join us for prasad and receive the blessings of Bappa.',
     icon: 'food',
   },
   {
-    number: '03',
+   
     time: '8:00 PM',
     title: 'Evening Aarti',
     text: 'Come together for devotion, lamps and the evening aarti.',
@@ -32,7 +32,7 @@ const family = [
   'Aesha Patel',
   'Shiv Patel',
 ];
-
+const whatsappNumber = '919427327949';
 function CalendarIcon() {
   return (
     <svg
@@ -592,9 +592,7 @@ export default function Home() {
 
               <article className="royal-card reveal">
 
-                <div className="event-number">
-                  01
-                </div>
+                
 
                 <div className="event-icon">
                   <CalendarIcon />
@@ -619,9 +617,7 @@ export default function Home() {
 
               <article className="royal-card reveal">
 
-                <div className="event-number">
-                  02
-                </div>
+                
 
                 <div className="event-icon">
                   <ClockIcon />
@@ -647,9 +643,7 @@ export default function Home() {
 
               <article className="royal-card reveal">
 
-                <div className="event-number">
-                  03
-                </div>
+                
 
                 <div className="event-icon">
                   <LocationIcon />
@@ -834,21 +828,19 @@ export default function Home() {
               </p>
 
 
-              <a
-                className="primary disabled"
-                href="#"
-                onClick={(e) =>
-                  e.preventDefault()
-                }
-              >
-                WhatsApp RSVP — Add Number
-              </a>
+          <a
+  className="primary whatsapp-button"
+  href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+    'Hello Patel Family! I would like to RSVP for PATEL CHA RAJA. Looking forward to celebrating Ganpati Bappa with you. Ganpati Bappa Morya! 🙏'
+  )}`}
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  WhatsApp RSVP
+</a>
 
 
-              <small>
-                Edit the WhatsApp number later
-                inside <b>app/page.js</b>.
-              </small>
+             
 
             </div>
 
