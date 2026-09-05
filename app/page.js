@@ -4,19 +4,16 @@ import { useEffect, useRef, useState } from 'react';
 
 const schedule = [
   {
-    number: '01',
     time: '8:00 AM',
     title: 'Morning Aarti',
     text: 'Begin the day with peaceful darshan, puja and aarti.',
   },
   {
-    number: '02',
     time: '12:00 PM',
     title: 'Mahaprasad',
     text: 'Join us for prasad and receive the blessings of Bappa.',
   },
   {
-    number: '03',
     time: '8:00 PM',
     title: 'Evening Aarti',
     text: 'Come together for devotion, lamps and the evening aarti.',
@@ -760,9 +757,7 @@ export default function Home() {
                 </div>
 
 
-                <span className="event-number">
-                  01
-                </span>
+              
 
 
                 <h3>
@@ -795,9 +790,7 @@ export default function Home() {
                 </div>
 
 
-                <span className="event-number">
-                  02
-                </span>
+            
 
 
                 <h3>
@@ -812,11 +805,6 @@ export default function Home() {
                   11:30 AM
                 </p>
 
-
-                <p>
-                  A sacred beginning with prayers
-                  and blessings
-                </p>
 
               </article>
 
@@ -834,9 +822,7 @@ export default function Home() {
                 </div>
 
 
-                <span className="event-number">
-                  03
-                </span>
+              
 
 
                 <h3>
