@@ -2754,3 +2754,57 @@ footer small {
   }
 
 }
+/* =========================================
+   HOST PHOTOS
+   ========================================= */
+
+.host-photo {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 22px;
+  border-radius: 50%;
+  overflow: hidden;
+  padding: 5px;
+
+  background: linear-gradient(
+    135deg,
+    var(--gold-light),
+    var(--gold),
+    var(--gold-light)
+  );
+
+  box-shadow:
+    0 0 0 1px rgba(255, 235, 180, 0.35),
+    0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.host-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Elegant inner border */
+
+.host-photo::after {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .host-photo {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 18px;
+  }
+}
