@@ -27,10 +27,22 @@ const schedule = [
 ];
 
 const family = [
-  'Nikin Patel',
-  'Bhakti Patel',
-  'Aesha Patel',
-  'Shiv Patel',
+  {
+    name: 'Nikin Patel',
+    photo: '/images/hosts/nikin.webp',
+  },
+  {
+    name: 'Bhakti Patel',
+    photo: '/images/hosts/bhakti.webp',
+  },
+  {
+    name: 'Aesha Patel',
+    photo: '/images/hosts/aesha.webp',
+  },
+  {
+    name: 'Shiv Patel',
+    photo: '/images/hosts/shiv.webp',
+  },
 ];
 const whatsappNumber = '919427327949';
 function CalendarIcon() {
@@ -707,34 +719,35 @@ export default function Home() {
             <div className="family-grid">
 
               {family.map(
-                (name) => (
+  (person) => (
 
-                  <article
-                    className="member reveal"
-                    key={name}
-                  >
+    <article
+      className="member reveal"
+      key={person.name}
+    >
 
-                    <div className="avatar">
+      <div className="avatar host-photo">
 
-                      {name
-                        .split(' ')
-                        .map((x) => x[0])
-                        .join('')}
+        <img
+          src={person.photo}
+          alt={person.name}
+          loading="lazy"
+        />
 
-                    </div>
+      </div>
 
-                    <h3>
-                      {name}
-                    </h3>
+      <h3>
+        {person.name}
+      </h3>
 
-                    <p>
-                      Host
-                    </p>
+      <p>
+        Host
+      </p>
 
-                  </article>
+    </article>
 
-                )
-              )}
+  )
+)}
 
             </div>
 
