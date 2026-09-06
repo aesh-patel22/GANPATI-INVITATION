@@ -165,11 +165,47 @@ function FoodIcon() {
 
 export default function Home() {
   const [opened, setOpened] = useState(false);
-  const [soundOn, setSoundOn] = useState(false);
+const [soundOn, setSoundOn] = useState(false);
 
-  const audioRef = useRef(null);
+const audioRef = useRef(null);
 
-  useEffect(() => {
+/* =========================================
+   REVEAL ANIMATIONS
+   ========================================= */
+
+useEffect(() => {
+  const reveal = () => {
+    document.querySelectorAll('.reveal').forEach((el) => {
+      if (
+        el.getBoundingClientRect().top <
+        window.innerHeight - 80
+      ) {
+        el.classList.add('visible');
+      }
+    });
+  };
+
+  reveal();
+
+  window.addEventListener(
+    'scroll',
+    reveal,
+    { passive: true }
+  );
+
+  return () => {
+    window.removeEventListener(
+      'scroll',
+      reveal
+    );
+  };
+}, [opened]);
+
+/* =========================================
+   STOP MUSIC WHEN LEAVING THE PAGE
+   ========================================= */
+
+useEffect(() => {
   const stopMusic = () => {
     if (audioRef.current) {
       audioRef.current.pause();
@@ -177,64 +213,70 @@ export default function Home() {
     }
   };
 
-  window.addEventListener('pagehide', stopMusic);
-  window.addEventListener('beforeunload', stopMusic);
+  window.addEventListener(
+    'pagehide',
+    stopMusic
+  );
+
+  window.addEventListener(
+    'beforeunload',
+    stopMusic
+  );
 
   return () => {
-    window.removeEventListener('pagehide', stopMusic);
-    window.removeEventListener('beforeunload', stopMusic);
+    window.removeEventListener(
+      'pagehide',
+      stopMusic
+    );
+
+    window.removeEventListener(
+      'beforeunload',
+      stopMusic
+    );
   };
 }, []);
 
-    reveal();
+/* =========================================
+   OPEN INVITATION
+   ========================================= */
 
-    window.addEventListener(
-      'scroll',
-      reveal,
-      { passive: true }
-    );
+const openInvitation = async () => {
+  setOpened(true);
 
-    return () => {
-      window.removeEventListener(
-        'scroll',
-        reveal
-      );
-    };
-  }, [opened]);
+  setTimeout(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, 50);
 
-  const openInvitation = async () => {
-    setOpened(true);
+  try {
+    await audioRef.current?.play();
+    setSoundOn(true);
+  } catch {
+    setSoundOn(false);
+  }
+};
 
-    setTimeout(() => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-      });
-    }, 50);
+/* =========================================
+   MUSIC TOGGLE
+   ========================================= */
 
+const toggleSound = async () => {
+  if (!audioRef.current) return;
+
+  if (soundOn) {
+    audioRef.current.pause();
+    setSoundOn(false);
+  } else {
     try {
-      await audioRef.current?.play();
+      await audioRef.current.play();
       setSoundOn(true);
     } catch {
       setSoundOn(false);
     }
-  };
-
-  const toggleSound = async () => {
-    if (!audioRef.current) return;
-
-    if (soundOn) {
-      audioRef.current.pause();
-      setSoundOn(false);
-    } else {
-      try {
-        await audioRef.current.play();
-        setSoundOn(true);
-      } catch {
-        setSoundOn(false);
-      }
-    }
-  };
+  }
+};
 
   return (
     <main>
