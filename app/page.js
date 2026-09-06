@@ -170,16 +170,21 @@ export default function Home() {
   const audioRef = useRef(null);
 
   useEffect(() => {
-    const reveal = () => {
-      document.querySelectorAll('.reveal').forEach((el) => {
-        if (
-          el.getBoundingClientRect().top <
-          window.innerHeight - 80
-        ) {
-          el.classList.add('visible');
-        }
-      });
-    };
+  const stopMusic = () => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
+  };
+
+  window.addEventListener('pagehide', stopMusic);
+  window.addEventListener('beforeunload', stopMusic);
+
+  return () => {
+    window.removeEventListener('pagehide', stopMusic);
+    window.removeEventListener('beforeunload', stopMusic);
+  };
+}, []);
 
     reveal();
 
@@ -661,37 +666,31 @@ export default function Home() {
 
             <div className="family-grid">
 
-              {family.map(
-  (person) => (
+             {family.map((person) => (
+  <article
+    className="member reveal"
+    key={person.name}
+  >
 
-    <article
-      className="member reveal"
-      key={person.name}
-    >
+    <div className="avatar host-photo">
+      <img
+        src={person.photo}
+        alt=""
+        loading="lazy"
+        draggable="false"
+      />
+    </div>
 
-      <div className="avatar host-photo">
+    <h3>
+      {person.name}
+    </h3>
 
-        <img
-          src={person.photo}
-          alt={person.name}
-          loading="lazy"
-        />
+    <p>
+      Host
+    </p>
 
-      </div>
-
-      <h3>
-        {person.name}
-      </h3>
-
-      <p>
-        Host
-      </p>
-
-          
-    </article>
-
-  )
-)}
+  </article>
+))}
 
             </div>
 
