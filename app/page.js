@@ -29,15 +29,15 @@ const schedule = [
 const family = [
   {
     name: 'Nikin Patel',
-    photo: '/images/hosts/nikin.webp',
+    photo: '/images/hosts/nikin.jpg',
   },
   {
     name: 'Bhakti Patel',
-    photo: '/images/hosts/bhakti.webp',
+    photo: '/images/hosts/bhakti.jpg',
   },
   {
     name: 'Aesha Patel',
-    photo: '/images/hosts/aesha.webp',
+    photo: '/images/hosts/aesha.jpg',
   },
   {
     name: 'Shiv Patel',
@@ -375,63 +375,7 @@ export default function Home() {
               </div>
 
 
-              {/* =========================
-                  REALISTIC FALLING PETALS
-
-                  FALL ONLY ONCE
-                  APPROX 3–4 SECONDS
-                  ========================= */}
-
-              <div
-                className="petal-rain"
-                aria-hidden="true"
-              >
-
-                <span className="real-petal white-petal petal-1" />
-
-                <span className="real-petal gold-petal petal-2" />
-
-                <span className="real-petal white-petal petal-3" />
-
-                <span className="real-petal gold-petal petal-4" />
-
-                <span className="real-petal white-petal petal-5" />
-
-                <span className="real-petal gold-petal petal-6" />
-
-                <span className="real-petal white-petal petal-7" />
-
-                <span className="real-petal gold-petal petal-8" />
-
-                <span className="real-petal white-petal petal-9" />
-
-                <span className="real-petal gold-petal petal-10" />
-
-                <span className="real-petal white-petal petal-11" />
-
-                <span className="real-petal gold-petal petal-12" />
-
-                <span className="real-petal white-petal petal-13" />
-
-                <span className="real-petal gold-petal petal-14" />
-
-                <span className="real-petal white-petal petal-15" />
-
-                <span className="real-petal gold-petal petal-16" />
-
-                <span className="real-petal white-petal petal-17" />
-
-                <span className="real-petal gold-petal petal-18" />
-
-                <span className="real-petal white-petal petal-19" />
-
-                <span className="real-petal gold-petal petal-20" />
-
-                <span className="real-petal white-petal petal-21" />
-
-                <span className="real-petal gold-petal petal-22" />
-
-              </div>
+             
 
             </div>
 
@@ -611,7 +555,7 @@ export default function Home() {
                 </div>
 
                 <h3>
-                  Ganpati Arrival
+                  Ganpati Aagman
                 </h3>
 
                 <strong>
@@ -640,12 +584,11 @@ export default function Home() {
                 </h3>
 
                 <strong>
-                  11:30 AM
+                 14 September 2026
                 </strong>
 
-                <p>
-                  A sacred beginning with
-                  prayers and blessings
+                <p className="event-time">
+                  8:30 PM
                 </p>
 
               </article>
@@ -754,64 +697,7 @@ export default function Home() {
           </section>
 
 
-          {/* =========================
-              GALLERY
-              ========================= */}
-
-          <section className="gallery section-pad">
-
-            <p className="section-icon">
-              ✧
-            </p>
-
-            <p className="eyebrow reveal">
-              CELEBRATION MEMORIES
-            </p>
-
-            <h2 className="reveal">
-              Photo Gallery
-            </h2>
-
-            <p className="subtitle reveal">
-              Replace these placeholders with
-              your Ganpati, family and
-              decoration photographs.
-            </p>
-
-
-            <div className="gallery-grid">
-
-              {[
-                'Ganpati Photo',
-                'Decoration Photo',
-                'Family Photo',
-                'Aarti Photo',
-                'Mahaprasad Photo',
-                'Celebration Photo',
-              ].map(
-                (label, i) => (
-
-                  <div
-                    className={`photo p${i + 1} reveal`}
-                    key={label}
-                  >
-
-                    <span>
-                      ✦
-                    </span>
-
-                    <p>
-                      {label}
-                    </p>
-
-                  </div>
-
-                )
-              )}
-
-            </div>
-
-          </section>
+         
 
 
           {/* =========================
